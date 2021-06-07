@@ -1,8 +1,48 @@
+import 'package:batik_app/view/Detail.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:batik_app/view/Qr_Scanner.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  String resultData = "";
+
+  void alertdialog(String str) {
+    if (str.isEmpty) {
+      return;
+    }
+    AlertDialog alertDialog = new AlertDialog(
+      content: new Container(
+          height: 200.0, child: new Column(children: [new Text(str)])),
+      actions: [
+        // new RaisedButton(
+        //     color: Colors.blue,
+        //     child: new Text("Submit"),
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     }),
+        new ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.blueAccent),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: new Text("OK",
+                style: new TextStyle(
+                    fontFamily: "Poppins",
+                    color: Colors.white,
+                    fontSize: 21.0,
+                    fontWeight: FontWeight.w600))),
+      ],
+    );
+    showDialog(
+        context: context, builder: (BuildContext context) => alertDialog);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +85,15 @@ class Home extends StatelessWidget {
                     primary: Colors.blueAccent,
                     shadowColor: Colors.grey),
                 onPressed: () {
-                  Navigator.of(context).push(
-                      new MaterialPageRoute(builder: (BuildContext context) {
-                    return QrScanner();
-                  }));
+                  _openCam(context);
+                  resultData == "" || resultData == null
+                      ? alertdialog(resultData)
+                      : Navigator.of(context).push(new MaterialPageRoute(
+                          builder: (BuildContext context) {
+                          return Detail(
+                            data: resultData,
+                          );
+                        }));
                 },
                 child: new Padding(
                   padding: EdgeInsets.symmetric(horizontal: 11.0),
@@ -64,5 +109,13 @@ class Home extends StatelessWidget {
         ]),
       ),
     );
+  }
+
+  Future _openCam(BuildContext context) async {
+    final result = await Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (BuildContext context) {
+      return QrScanner();
+    }));
+    resultData = result;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QrScanner extends StatefulWidget {
@@ -10,10 +9,16 @@ class QrScanner extends StatefulWidget {
 }
 
 class _QrScannerState extends State<QrScanner> {
-  final GlobalKey qrKey = GlobalKey();
+  final GlobalKey qrKey = GlobalKey(debugLabel: "QR");
   bool _flashOn = false;
   bool _frontCam = false;
+  late String result;
   late QRViewController _controller;
+
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +29,25 @@ class _QrScannerState extends State<QrScanner> {
           new QRView(
             key: qrKey,
             overlay: QrScannerOverlayShape(
-              borderColor: Colors.blue,
+              borderColor: Colors.red,
+              borderRadius: 10,
+              borderLength: 30,
+              borderWidth: 10,
+              cutOutSize: 300,
             ),
             onQRViewCreated: (QRViewController controller) {
               this._controller = controller;
+              controller.scannedDataStream.listen((event) {
+                if (mounted) {
+                  //dispose controller
+                  // _controller.dispose();
+
+                  result = event.code;
+                  Navigator.pop(context, result);
+                }
+              });
             },
           ),
-          new Container(color: Colors.blueAccent),
           new Padding(
             padding: EdgeInsets.only(top: 19.0),
             child: new Align(
@@ -72,7 +89,7 @@ class _QrScannerState extends State<QrScanner> {
                     color: Colors.white),
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, null);
                   },
                   icon: Icon(Icons.close),
                   color: Colors.white,

@@ -1,5 +1,4 @@
 import 'package:batik_app/view/Home.dart';
-import 'package:batik_app/view/OnBoarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
