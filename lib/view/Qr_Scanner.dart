@@ -70,19 +70,19 @@ class _QrScannerState extends State<QrScanner> {
               children: [
                 IconButton(
                     onPressed: () {
+                      _controller.toggleFlash();
                       setState(() {
                         _flashOn = !_flashOn;
                       });
-                      _controller.toggleFlash();
                     },
                     icon: Icon(_flashOn ? Icons.flash_on : Icons.flash_off),
                     color: Colors.white),
                 IconButton(
                     onPressed: () {
+                      _controller.flipCamera();
                       setState(() {
                         _frontCam = !_frontCam;
                       });
-                      _controller.flipCamera();
                     },
                     icon: Icon(
                         _frontCam ? Icons.camera_front : Icons.camera_rear),
