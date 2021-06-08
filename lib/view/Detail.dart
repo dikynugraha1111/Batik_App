@@ -35,7 +35,7 @@ class _DetailState extends State<Detail> {
                       width: MediaQuery.of(context).size.width,
                       height: 215.0,
                       decoration: new BoxDecoration(
-                          color: Colors.grey[300],
+                          color: HexColor("#B3e9c46a"),
                           borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(25.0),
                               bottomLeft: Radius.circular(25.0))),
@@ -48,11 +48,11 @@ class _DetailState extends State<Detail> {
                             child: Text(
                               'No Image Dude...😢',
                               style: new TextStyle(
-                                fontFamily: "Poppins",
-                                fontSize: 33.0,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 2.0,
-                              ),
+                                  fontFamily: "Poppins",
+                                  fontSize: 33.0,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 2.0,
+                                  color: Colors.white),
                               textAlign: TextAlign.center,
                             ),
                           );
@@ -218,7 +218,7 @@ class _DetailState extends State<Detail> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 11.0, vertical: 3.0),
                   decoration: BoxDecoration(
-                    color: Colors.grey[400],
+                    color: HexColor("#e9c46a"),
                     borderRadius: BorderRadius.circular(7.0),
                   ),
                   child: new Text(
