@@ -53,7 +53,7 @@ class CustomDialog extends StatelessWidget {
                         fontWeight: FontWeight.w300)),
                 SizedBox(height: 24.0),
                 Align(
-                  alignment: Alignment.bottomRight,
+                  alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -80,7 +80,7 @@ class CustomDialog extends StatelessWidget {
           right: 16,
           child: Image.asset(
             'img/failed.gif',
-            // height: 130.0,
+            height: 130.0,
           ),
         )
       ],
