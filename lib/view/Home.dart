@@ -1,3 +1,4 @@
+import 'package:batik_app/PopUp.dart';
 import 'package:batik_app/view/Detail.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:batik_app/view/Qr_Scanner.dart';
@@ -86,14 +87,6 @@ class _HomeState extends State<Home> {
                     shadowColor: Colors.grey),
                 onPressed: () {
                   _openCam(context);
-                  resultData == "" || resultData == null
-                      ? alertdialog(resultData)
-                      : Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (BuildContext context) {
-                          return Detail(
-                            data: resultData,
-                          );
-                        }));
                 },
                 child: new Padding(
                   padding: EdgeInsets.symmetric(horizontal: 11.0),
@@ -117,5 +110,20 @@ class _HomeState extends State<Home> {
       return QrScanner();
     }));
     resultData = result;
+    print("Ini DATA Function" + resultData);
+    setState(() {
+      print("Ini di Widget" + resultData);
+      resultData == "KOSONG"
+          ? showDialog(
+              context: context,
+              builder: (context) =>
+                  CustomDialog(title: "GAGAL", description: resultData))
+          : Navigator.of(context)
+              .push(new MaterialPageRoute(builder: (BuildContext context) {
+              return Detail(
+                data: resultData,
+              );
+            }));
+    });
   }
 }
