@@ -52,9 +52,13 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         title: new Text(
           "Batik Apip",
-          style: new TextStyle(fontFamily: "DancingScript"),
+          style: new TextStyle(
+              fontFamily: "DancingScript",
+              fontWeight: FontWeight.w600,
+              fontSize: 23.0,
+              letterSpacing: 1.5),
         ),
-        leading: Icon(Icons.home),
+        leading: Icon(Icons.ac_unit),
       ),
       body: new SafeArea(
         child: new Stack(children: [
