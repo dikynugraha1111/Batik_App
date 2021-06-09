@@ -49,7 +49,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("Batik_App"),
+        centerTitle: true,
+        title: new Text(
+          "Batik Apip",
+          style: new TextStyle(fontFamily: "DancingScript"),
+        ),
         leading: Icon(Icons.home),
       ),
       body: new SafeArea(

@@ -29,7 +29,7 @@ class _QrScannerState extends State<QrScanner> {
           new QRView(
             key: qrKey,
             overlay: QrScannerOverlayShape(
-              borderColor: Colors.red,
+              borderColor: Colors.blue,
               borderRadius: 10,
               borderLength: 30,
               borderWidth: 10,
@@ -49,18 +49,30 @@ class _QrScannerState extends State<QrScanner> {
             },
           ),
           new Padding(
-            padding: EdgeInsets.only(top: 19.0),
+            padding: EdgeInsets.only(top: 75.0),
             child: new Align(
               alignment: Alignment.topCenter,
-              child: new Text(
-                "Batik Scanner",
-                style: new TextStyle(
+              child: Column(children: [
+                new Text(
+                  "Batik Scanner",
+                  style: new TextStyle(
+                      fontFamily: "Poppins",
+                      color: Colors.white,
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 2.5),
+                ),
+                new Text(
+                  "Sejajarkan Qr Code batik dengan Scanner",
+                  style: new TextStyle(
                     fontFamily: "Poppins",
                     color: Colors.white,
-                    fontSize: 21.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 2.5),
-              ),
+                    fontSize: 11.0,
+                    fontWeight: FontWeight.w200,
+                    letterSpacing: 2.0,
+                  ),
+                )
+              ]),
             ),
           ),
           new Align(
