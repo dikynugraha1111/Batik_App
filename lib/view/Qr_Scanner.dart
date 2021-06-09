@@ -89,7 +89,7 @@ class _QrScannerState extends State<QrScanner> {
                     color: Colors.white),
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context, "Ada Data Nich...");
+                    Navigator.pop(context, "sukses");
                   },
                   icon: Icon(Icons.close),
                   color: Colors.white,

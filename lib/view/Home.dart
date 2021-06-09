@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 new Text(
-                  "Scanning Barcode",
+                  "Scan Barcode Batik",
                   style: new TextStyle(
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.w500,
@@ -111,19 +111,18 @@ class _HomeState extends State<Home> {
     }));
     resultData = result;
     print("Ini DATA Function" + resultData);
-    setState(() {
-      print("Ini di Widget" + resultData);
-      resultData == "KOSONG"
-          ? showDialog(
-              context: context,
-              builder: (context) =>
-                  CustomDialog(title: "GAGAL", description: resultData))
-          : Navigator.of(context)
-              .push(new MaterialPageRoute(builder: (BuildContext context) {
-              return Detail(
-                data: resultData,
-              );
-            }));
-    });
+
+    print("Ini di Widget" + resultData);
+    resultData == "sukses"
+        ? Navigator.of(context)
+            .push(new MaterialPageRoute(builder: (BuildContext context) {
+            return Detail(
+              data: resultData,
+            );
+          }))
+        : showDialog(
+            context: context,
+            builder: (context) => CustomDialog(
+                title: "GAGAL", description: "Maaf, data tidak ditemukan..."));
   }
 }
