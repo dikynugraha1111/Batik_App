@@ -1,4 +1,5 @@
 import 'package:batik_app/service/getData.dart';
+
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -52,7 +53,7 @@ class _QrScannerState extends State<QrScanner> {
                   });
                   statusAPI = getBarcode.status;
                   statusAPI == "success"
-                      ? Navigator.pop(context, result)
+                      ? Navigator.pop(context, event.code)
                       : Navigator.pop(context, "gagal");
                 }
               });

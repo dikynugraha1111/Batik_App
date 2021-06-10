@@ -1,4 +1,6 @@
 import 'package:batik_app/PopUp.dart';
+import 'package:batik_app/service/getItem.dart';
+
 import 'package:batik_app/view/Detail.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:batik_app/view/Qr_Scanner.dart';
@@ -13,6 +15,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String resultData = "";
+  late GetItem getFromHome;
 
   void alertdialog(String str) {
     if (str.isEmpty) {
@@ -132,7 +135,7 @@ class _HomeState extends State<Home> {
                     primary: Colors.blueAccent,
                     shadowColor: Colors.grey),
                 onPressed: () {
-                  _openCam(context);
+                  _openCam();
                 },
                 child: new Padding(
                   padding: EdgeInsets.symmetric(horizontal: 11.0),
@@ -151,7 +154,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Future _openCam(BuildContext context) async {
+  Future _openCam() async {
     final result = await Navigator.of(context)
         .push(new MaterialPageRoute(builder: (BuildContext context) {
       return QrScanner();
@@ -160,13 +163,22 @@ class _HomeState extends State<Home> {
     print("Ini DATA Function" + resultData);
 
     print("Ini di Widget" + resultData);
+
     resultData != "gagal"
-        ? Navigator.of(context)
-            .push(new MaterialPageRoute(builder: (BuildContext context) {
-            return Detail(
-              data: resultData,
-            );
-          }))
+        ? GetItem.connectToApi(resultData).then((value) {
+            getFromHome = value;
+            Navigator.of(context)
+                .push(new MaterialPageRoute(builder: (BuildContext context) {
+              return Detail(
+                  nama: getFromHome.namaPembatik,
+                  paguyuban: getFromHome.namaPaguyuban,
+                  motif: getFromHome.namaMotif,
+                  pewarna: getFromHome.namaPewarna,
+                  grade: getFromHome.grade,
+                  desc: getFromHome.desc,
+                  url: getFromHome.urlImg);
+            }));
+          })
         : showDialog(
             context: context,
             builder: (context) => CustomDialog(

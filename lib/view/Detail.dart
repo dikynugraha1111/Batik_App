@@ -1,26 +1,47 @@
-import 'package:batik_app/service/getData.dart';
 import 'package:flutter/material.dart';
-
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:hexcolor/hexcolor.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({Key? key, required this.data}) : super(key: key);
-  final String data;
+  const Detail({
+    Key? key,
+    required this.nama,
+    required this.paguyuban,
+    required this.motif,
+    required this.pewarna,
+    required this.desc,
+    required this.grade,
+    required this.url,
+  }) : super(key: key);
+
+  final String nama;
+  final String paguyuban;
+  final String motif;
+  final String pewarna;
+  final String grade;
+  final String desc;
+  final String url;
 
   @override
   _DetailState createState() => _DetailState();
 }
 
 class _DetailState extends State<Detail> {
-  late GetBarcode getBarcode;
+  late String gradeDesc;
+  void ganti() {
+    if (widget.grade == "A") {
+      gradeDesc = "Sangat Baik";
+    } else if (widget.grade == "B") {
+      gradeDesc = "Baik";
+    } else {
+      gradeDesc = "Cukup";
+    }
+  }
 
   @override
   void initState() {
-    GetBarcode.connectToApi(widget.data).then((value) {
-      getBarcode = value;
-    });
     super.initState();
+    ganti();
   }
 
   TextStyle detailBatik = TextStyle(
@@ -52,7 +73,7 @@ class _DetailState extends State<Detail> {
                               bottomLeft: Radius.circular(25.0),
                               bottomRight: Radius.circular(25.0)),
                           child: Image.network(
-                            "http://batik.futsaloka.my.id" + getBarcode.urlImg,
+                            "http://batik.futsaloka.my.id" + widget.url,
                             errorBuilder: (BuildContext context,
                                 Object exception, StackTrace? stackTrace) {
                               print(exception);
@@ -69,7 +90,7 @@ class _DetailState extends State<Detail> {
                                 ),
                               );
                             },
-
+                            width: MediaQuery.of(context).size.width,
                             fit: BoxFit.cover,
                             // width: MediaQuery.of(context).size.width,
                             // height: 215.0,
@@ -187,27 +208,24 @@ class _DetailState extends State<Detail> {
                             "Nama Pembatik ",
                             style: detailBatik,
                           ),
-                          new Text(": ${getBarcode.namaPembatik}",
-                              style: detailBatik),
+                          new Text(": ${widget.nama}", style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Kelompok", style: detailBatik),
-                          new Text(": ${getBarcode.namaPaguyuban}",
-                              style: detailBatik),
+                          new Text(": ${widget.paguyuban}", style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Motif", style: detailBatik),
-                          new Text(": ${getBarcode.namaMotif}",
-                              style: detailBatik),
+                          new Text(": ${widget.motif}", style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Finishing", style: detailBatik),
-                          new Text(": ${getBarcode.namaPewarna}",
-                              style: detailBatik),
+                          new Text(": ${widget.pewarna}", style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Grade", style: detailBatik),
-                          new Text(": A", style: detailBatik),
+                          new Text(": ${widget.grade} - $gradeDesc",
+                              style: detailBatik),
                         ]),
                       ],
                     )),
@@ -227,7 +245,7 @@ class _DetailState extends State<Detail> {
                   margin:
                       EdgeInsets.only(right: 21.0, left: 21.0, bottom: 30.0),
                   child: Text(
-                    "Wes pokok apik jan tur ngeri. No comment wes... lae lae kerjo kejro.... ngetik ro mikir di gaji nggeh oawkoakokw :D oakwokaowkaokwokaowkaokwoakwokaowkoakwoakwokaowkoakwoakw",
+                    widget.desc,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                         fontSize: 14.0,
