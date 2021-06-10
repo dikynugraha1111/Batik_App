@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
         child: new Stack(children: [
           Container(
             width: double.infinity,
-            height: 350.0,
+            height: ((MediaQuery.of(context).size.height) / 3),
             alignment: Alignment.topCenter,
             decoration: new BoxDecoration(
                 borderRadius: new BorderRadius.vertical(
@@ -84,7 +84,8 @@ class _HomeState extends State<Home> {
           ),
           Container(
             alignment: Alignment.topCenter,
-            margin: EdgeInsets.only(top: 300.0),
+            margin: EdgeInsets.only(
+                top: (((MediaQuery.of(context).size.height) / 3) - 30)),
             child: new Column(
               children: [
                 Container(
@@ -159,7 +160,7 @@ class _HomeState extends State<Home> {
     print("Ini DATA Function" + resultData);
 
     print("Ini di Widget" + resultData);
-    resultData == "sukses"
+    resultData != "gagal"
         ? Navigator.of(context)
             .push(new MaterialPageRoute(builder: (BuildContext context) {
             return Detail(

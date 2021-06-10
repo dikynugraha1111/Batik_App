@@ -3,19 +3,32 @@ import 'dart:convert' show json;
 
 class GetBarcode {
   String status;
-  String name;
+  String namaPembatik;
+  String namaPaguyuban;
+  String namaMotif;
+  String namaPewarna;
+  String urlImg;
 
-  GetBarcode({required this.status, required this.name});
+  GetBarcode(
+      {required this.status,
+      required this.namaPembatik,
+      required this.namaPaguyuban,
+      required this.namaMotif,
+      required this.namaPewarna,
+      required this.urlImg});
   factory GetBarcode.getData(Map<String, dynamic> object) {
     return GetBarcode(
-      status: object["meta"]["status"],
-      name: object["data"]["name"],
-    );
+        status: object["status"],
+        namaPembatik: object["data"]["nama_pembatik"],
+        namaPaguyuban: object["data"]["paguyuban"],
+        namaMotif: object["data"]["motif"],
+        namaPewarna: object["data"]["pewarnaan"],
+        urlImg: object["data"]["img_url"]);
   }
 
   static Future<GetBarcode> connectToApi(String codeScan) async {
-    var response = await http
-        .get(Uri.parse("http://www.futsaloka.my.id/api/batik/" + codeScan));
+    var response = await http.get(
+        Uri.parse("http://batik.futsaloka.my.id/api/fetchcode/" + codeScan));
     var responseObject = json.decode(response.body);
     return GetBarcode.getData(responseObject);
   }

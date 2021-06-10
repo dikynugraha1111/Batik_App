@@ -1,3 +1,4 @@
+import 'package:batik_app/service/getData.dart';
 import 'package:flutter/material.dart';
 
 // ignore: import_of_legacy_library_into_null_safe
@@ -12,8 +13,15 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  var img = NetworkImage(
-      "aaahttps://blog.mariberkarya.com/wp-content/uploads/2020/02/9-Motif-Batik-Yogyakarta-yang-Wajib-Kamu-Ketahui-Motif-Batik-Nitik-1024x559.jpg");
+  late GetBarcode getBarcode;
+
+  @override
+  void initState() {
+    GetBarcode.connectToApi(widget.data).then((value) {
+      getBarcode = value;
+    });
+    super.initState();
+  }
 
   TextStyle detailBatik = TextStyle(
       fontSize: 14.0,
@@ -44,7 +52,7 @@ class _DetailState extends State<Detail> {
                               bottomLeft: Radius.circular(25.0),
                               bottomRight: Radius.circular(25.0)),
                           child: Image.network(
-                            "https://blog.mariberkarya.com/wp-content/uploads/2020/02/9-Motif-Batik-Yogyakarta-yang-Wajib-Kamu-Ketahui-Motif-Batik-Nitik-1024x559.jpg",
+                            "http://batik.futsaloka.my.id" + getBarcode.urlImg,
                             errorBuilder: (BuildContext context,
                                 Object exception, StackTrace? stackTrace) {
                               print(exception);
@@ -179,20 +187,23 @@ class _DetailState extends State<Detail> {
                             "Nama Pembatik ",
                             style: detailBatik,
                           ),
-                          new Text(": Jokodadi", style: detailBatik),
+                          new Text(": ${getBarcode.namaPembatik}",
+                              style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Kelompok", style: detailBatik),
-                          new Text(": Paguyuban Loak Jogja",
+                          new Text(": ${getBarcode.namaPaguyuban}",
                               style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Motif", style: detailBatik),
-                          new Text(": Nitik", style: detailBatik),
+                          new Text(": ${getBarcode.namaMotif}",
+                              style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Finishing", style: detailBatik),
-                          new Text(": Apip", style: detailBatik),
+                          new Text(": ${getBarcode.namaPewarna}",
+                              style: detailBatik),
                         ]),
                         TableRow(children: [
                           new Text("Grade", style: detailBatik),
