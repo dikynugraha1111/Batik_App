@@ -57,7 +57,7 @@ class CustomDialog extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
+                            borderRadius: BorderRadius.circular(7.0)),
                         primary: Colors.blueAccent,
                         shadowColor: Colors.grey),
                     onPressed: () {

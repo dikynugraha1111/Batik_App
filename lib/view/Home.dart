@@ -63,23 +63,60 @@ class _HomeState extends State<Home> {
       body: new SafeArea(
         child: new Stack(children: [
           Container(
-            alignment: Alignment.center,
+            width: double.infinity,
+            height: 350.0,
+            alignment: Alignment.topCenter,
+            decoration: new BoxDecoration(
+                borderRadius: new BorderRadius.vertical(
+                    bottom: Radius.elliptical(175.0, 45.0)),
+                image: new DecorationImage(
+                  image: AssetImage("img/coverHome.jpg"),
+                  fit: BoxFit.cover,
+                )),
+            // child: ClipRRect(
+            //     borderRadius:
+            //         BorderRadius.only(bottomLeft: Radius.circular(15.0)),
+            //     child: new Image.asset(
+            //       "img/coverHome.jpg",
+            //       fit: BoxFit.cover,
+            //     )
+            // ),
+          ),
+          Container(
+            alignment: Alignment.topCenter,
+            margin: EdgeInsets.only(top: 300.0),
             child: new Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                new Text(
-                  "Scan Barcode Batik",
-                  style: new TextStyle(
-                    fontFamily: "Poppins",
-                    fontWeight: FontWeight.w500,
-                    fontSize: 21.0,
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 0), // changes position of shadow
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(11.0)),
+                  child: new Icon(
+                    Icons.qr_code_2,
+                    color: Colors.black,
+                    size: 135.0,
                   ),
                 ),
-                new Icon(
-                  Icons.qr_code_2_rounded,
-                  color: Colors.black,
-                  size: 135.0,
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 25.0, vertical: 11.0),
+                  child: new Text(
+                    "Klik SCAN untuk memulai scanning QR Code",
+                    style: new TextStyle(
+                      fontFamily: "Poppins",
+                      fontWeight: FontWeight.w300,
+                      fontSize: 18.0,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),
@@ -103,6 +140,7 @@ class _HomeState extends State<Home> {
                           fontFamily: "Poppins",
                           fontSize: 28.0,
                           color: Colors.white,
+                          fontWeight: FontWeight.w700,
                           letterSpacing: 2.0),
                       textAlign: TextAlign.center),
                 )),
