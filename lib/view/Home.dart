@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
       appBar: new AppBar(
         centerTitle: true,
         title: new Text(
-          "Batik Apip",
+          "siBatik",
           style: new TextStyle(
               fontFamily: "DancingScript",
               fontWeight: FontWeight.w600,

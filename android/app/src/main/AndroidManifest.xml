@@ -2,7 +2,7 @@
     package="com.example.batik_app">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="batik_app"
+        android:label="siBatik"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

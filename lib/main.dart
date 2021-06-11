@@ -1,5 +1,9 @@
 import 'package:batik_app/view/Home.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:hexcolor/hexcolor.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,9 +14,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Batik App',
-      home: Home(),
-    );
+        debugShowCheckedModeBanner: false,
+        home: AnimatedSplashScreen(
+            splash: new Text(
+              "siBatik Yogyakarta",
+              style: new TextStyle(
+                  fontFamily: "DancingScript",
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
+            backgroundColor: HexColor("#e9c46a"),
+            splashTransition: SplashTransition.fadeTransition,
+            pageTransitionType: PageTransitionType.fade,
+            nextScreen: Home()));
   }
 }

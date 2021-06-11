@@ -73,7 +73,7 @@ class _DetailState extends State<Detail> {
                               bottomLeft: Radius.circular(25.0),
                               bottomRight: Radius.circular(25.0)),
                           child: Image.network(
-                            "http://batik.futsaloka.my.id" + widget.url,
+                            "http://batik.futsaloka.my.id/" + widget.url,
                             errorBuilder: (BuildContext context,
                                 Object exception, StackTrace? stackTrace) {
                               print(exception);
