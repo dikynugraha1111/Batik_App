@@ -16,9 +16,9 @@ class _QrScannerState extends State<QrScanner> {
   bool _frontCam = false;
   late String result;
   late QRViewController _controller;
-  late GetBarcode getBarcode;
 
   late String statusAPI;
+  late GetBarcode getBarcode;
 
   void dispose() {
     _controller.dispose();
@@ -44,14 +44,13 @@ class _QrScannerState extends State<QrScanner> {
               this._controller = controller;
               controller.scannedDataStream.listen((event) {
                 if (mounted) {
-                  //dispose controller
-                  // _controller.dispose();
-
                   result = event.code;
                   GetBarcode.connectToApi(result).then((value) {
                     getBarcode = value;
                   });
                   statusAPI = getBarcode.status;
+                  print("Status" + getBarcode.status);
+                  _controller.dispose();
                   statusAPI == "success"
                       ? Navigator.pop(context, event.code)
                       : Navigator.pop(context, "gagal");

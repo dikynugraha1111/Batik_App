@@ -306,7 +306,7 @@ class _DetailState extends State<Detail> {
                 new Expanded(
                   child: new RaisedButton(
                     padding: EdgeInsets.all(12.0),
-                    color: Colors.blueAccent,
+                    color: HexColor("#e9c46a"),
                     splashColor: Colors.blue[800],
                     onPressed: () {
                       Navigator.pop(context);

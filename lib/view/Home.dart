@@ -5,6 +5,7 @@ import 'package:batik_app/view/Detail.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:batik_app/view/Qr_Scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -52,6 +53,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
+        backgroundColor: HexColor("#e9c46a"),
         centerTitle: true,
         title: new Text(
           "siBatik",
@@ -132,7 +134,7 @@ class _HomeState extends State<Home> {
                 style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
-                    primary: Colors.blueAccent,
+                    primary: HexColor("#e9c46a"),
                     shadowColor: Colors.grey),
                 onPressed: () {
                   _openCam();
@@ -165,8 +167,9 @@ class _HomeState extends State<Home> {
     print("Ini di Widget" + resultData);
 
     resultData != "gagal"
-        ? GetItem.connectToApi(resultData).then((value) {
+        ? await GetItem.connectToApi(resultData).then((value) {
             getFromHome = value;
+
             Navigator.of(context)
                 .push(new MaterialPageRoute(builder: (BuildContext context) {
               return Detail(
