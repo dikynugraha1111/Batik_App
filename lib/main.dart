@@ -16,14 +16,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: AnimatedSplashScreen(
-            splash: new Text(
-              "siBatik Yogyakarta",
-              style: new TextStyle(
-                  fontFamily: "DancingScript",
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white),
-              textAlign: TextAlign.center,
+            splashIconSize: 170.0,
+            splash: new SingleChildScrollView(
+              child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    new Image.asset(
+                      "img/logo.png",
+                      width: 100.0,
+                    ),
+                    SizedBox(
+                      height: 7.0,
+                    ),
+                    new Text(
+                      "siBatik Yogyakarta",
+                      style: new TextStyle(
+                          fontFamily: "DancingScript",
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ]),
             ),
             backgroundColor: HexColor("#e9c46a"),
             splashTransition: SplashTransition.fadeTransition,
