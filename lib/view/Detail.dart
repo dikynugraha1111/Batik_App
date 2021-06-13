@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Detail extends StatefulWidget {
-  const Detail({
-    Key? key,
-    required this.nama,
-    required this.paguyuban,
-    required this.motif,
-    required this.pewarna,
-    required this.desc,
-    required this.grade,
-    required this.url,
-  }) : super(key: key);
+  const Detail(
+      {Key? key,
+      required this.nama,
+      required this.paguyuban,
+      required this.motif,
+      required this.pewarna,
+      required this.desc,
+      required this.grade,
+      required this.url,
+      required this.kodeTerurut})
+      : super(key: key);
 
   final String nama;
   final String paguyuban;
@@ -21,6 +22,7 @@ class Detail extends StatefulWidget {
   final String grade;
   final String desc;
   final String url;
+  final String kodeTerurut;
 
   @override
   _DetailState createState() => _DetailState();
@@ -264,7 +266,7 @@ class _DetailState extends State<Detail> {
                       borderRadius: BorderRadius.circular(7.0),
                     ),
                     child: new Text(
-                      "N.T.DIY.SN.01.2.EX-192038420",
+                      widget.kodeTerurut,
                       style: new TextStyle(
                           fontFamily: "Poppins",
                           fontSize: 18.0,

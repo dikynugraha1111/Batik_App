@@ -173,13 +173,15 @@ class _HomeState extends State<Home> {
             Navigator.of(context)
                 .push(new MaterialPageRoute(builder: (BuildContext context) {
               return Detail(
-                  nama: getFromHome.namaPembatik,
-                  paguyuban: getFromHome.namaPaguyuban,
-                  motif: getFromHome.namaMotif,
-                  pewarna: getFromHome.namaPewarna,
-                  grade: getFromHome.grade,
-                  desc: getFromHome.desc,
-                  url: getFromHome.urlImg);
+                nama: getFromHome.namaPembatik,
+                paguyuban: getFromHome.namaPaguyuban,
+                motif: getFromHome.namaMotif,
+                pewarna: getFromHome.namaPewarna,
+                grade: getFromHome.grade,
+                desc: getFromHome.desc,
+                url: getFromHome.urlImg,
+                kodeTerurut: resultData,
+              );
             }));
           })
         : showDialog(
