@@ -181,6 +181,7 @@ class _HomeState extends State<Home> {
                 desc: getFromHome.desc,
                 url: getFromHome.urlImg,
                 kodeTerurut: resultData,
+                filosofi: getFromHome.filosofi,
               );
             }));
           })

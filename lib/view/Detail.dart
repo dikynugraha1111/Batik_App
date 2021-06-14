@@ -12,7 +12,8 @@ class Detail extends StatefulWidget {
       required this.desc,
       required this.grade,
       required this.url,
-      required this.kodeTerurut})
+      required this.kodeTerurut,
+      required this.filosofi})
       : super(key: key);
 
   final String nama;
@@ -23,6 +24,7 @@ class Detail extends StatefulWidget {
   final String desc;
   final String url;
   final String kodeTerurut;
+  final String filosofi;
 
   @override
   _DetailState createState() => _DetailState();
@@ -231,6 +233,30 @@ class _DetailState extends State<Detail> {
                         ]),
                       ],
                     )),
+
+                Container(
+                  padding: EdgeInsets.only(top: 5.0, left: 21.0, right: 21.0),
+                  child: Text(
+                    "Filosofi Batik",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 16.0,
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w700),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 21.0, left: 21.0, bottom: 5.0),
+                  child: Text(
+                    widget.filosofi,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        fontSize: 14.0,
+                        letterSpacing: 0.5,
+                        fontFamily: "Poppins",
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
 
                 Container(
                   padding: EdgeInsets.only(top: 5.0, left: 21.0, right: 21.0),
