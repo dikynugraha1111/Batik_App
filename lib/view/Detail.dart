@@ -246,7 +246,10 @@ class _DetailState extends State<Detail> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 21.0, left: 21.0, bottom: 5.0),
+                  margin: EdgeInsets.only(
+                    right: 21.0,
+                    left: 21.0,
+                  ),
                   child: Text(
                     widget.filosofi,
                     textAlign: TextAlign.left,
@@ -261,7 +264,7 @@ class _DetailState extends State<Detail> {
                 Container(
                   padding: EdgeInsets.only(top: 5.0, left: 21.0, right: 21.0),
                   child: Text(
-                    "Description",
+                    "Deskripsi",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 16.0,
