@@ -38,7 +38,7 @@ class GetItem {
 
   static Future<GetItem> connectToApi(String codeScan) async {
     var response = await http.get(
-        Uri.parse("http://batik.futsaloka.my.id/api/fetchcode/" + codeScan));
+        Uri.parse("https://batiknitikjogja.com/api/fetchcode/" + codeScan));
     var responseObject = json.decode(response.body);
     return GetItem.getData(responseObject);
   }

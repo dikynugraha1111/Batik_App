@@ -77,7 +77,7 @@ class _DetailState extends State<Detail> {
                               bottomLeft: Radius.circular(25.0),
                               bottomRight: Radius.circular(25.0)),
                           child: Image.network(
-                            "http://batik.futsaloka.my.id/" + widget.url,
+                            "https://batiknitikjogja.com/" + widget.url,
                             errorBuilder: (BuildContext context,
                                 Object exception, StackTrace? stackTrace) {
                               print(exception);
@@ -100,7 +100,6 @@ class _DetailState extends State<Detail> {
                             // height: 215.0,
                           ),
                         )),
-
                     SafeArea(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -123,26 +122,6 @@ class _DetailState extends State<Detail> {
                         ),
                       ),
                     ),
-                    //Judul
-                    // Center(
-                    //   child: Container(
-                    //     decoration: new BoxDecoration(
-                    //         borderRadius: BorderRadius.circular(11),
-                    //         color: Colors.white),
-                    //     padding: EdgeInsets.symmetric(horizontal: 11.0),
-                    //     margin: EdgeInsets.only(top: 190.0),
-                    //     child: Text(
-                    //       "Batik Nitik Yogyakarta",
-                    //       textAlign: TextAlign.center,
-                    //       style: TextStyle(
-                    //           fontStyle: FontStyle.normal,
-                    //           fontSize: 27.0,
-                    //           letterSpacing: 1.5,
-                    //           fontWeight: FontWeight.w600,
-                    //           fontFamily: "Poppins"),
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
                 Container(
@@ -162,38 +141,7 @@ class _DetailState extends State<Detail> {
                     textAlign: TextAlign.left,
                   ),
                 ),
-                // Icon Detail
-                // Container(
-                //   padding: EdgeInsets.symmetric(
-                //     vertical: 16.0,
-                //   ),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //     children: <Widget>[
-                //       Column(
-                //         children: <Widget>[
-                //           Icon(Icons.wine_bar),
-                //           SizedBox(height: 8.0),
-                //           Text("WOW"),
-                //         ],
-                //       ),
-                //       Column(
-                //         children: <Widget>[
-                //           Icon(Icons.access_time),
-                //           SizedBox(height: 8.0),
-                //           Text("12 Jam"),
-                //         ],
-                //       ),
-                //       Column(
-                //         children: <Widget>[
-                //           Icon(Icons.monetization_on),
-                //           SizedBox(height: 8.0),
-                //           Text("10Jt")
-                //         ],
-                //       ),
-                //     ],
-                //   ),
-                // ),
+
                 // Desc
                 Divider(
                   thickness: 1.5,
@@ -304,30 +252,6 @@ class _DetailState extends State<Detail> {
                     ),
                   ),
                 ),
-
-                // Image List
-                // Container(
-                //   height: 144.0,
-                //   padding: EdgeInsets.only(bottom: 5.0),
-                //   child: Scrollbar(
-                //     controller: _scrollController,
-                //     isAlwaysShown: true,
-                //     child: new ListView.builder(
-                //       controller: _scrollController,
-                //       scrollDirection: Axis.horizontal,
-                //       itemCount: widget.place.imageUrls.length,
-                //       itemBuilder: (BuildContext context, int index) {
-                //         return Padding(
-                //           padding: EdgeInsets.symmetric(horizontal: 5.0),
-                //           child: ClipRRect(
-                //             borderRadius: BorderRadius.circular(10.0),
-                //             child: new Image.network(widget.place.imageUrls[index]),
-                //           ),
-                //         );
-                //       },
-                //     ),
-                //   ),
-                // )
               ],
             ),
           ),
@@ -364,21 +288,6 @@ class _DetailState extends State<Detail> {
                   ),
                 ),
               ]))
-          // new GestureDetector(
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //   },
-          //   child: new Container(
-          //       alignment: Alignment.bottomCenter,
-          //       child: new Row(
-          //         children: [
-          //           new Text(
-          //             "Coba",
-          //             textAlign: TextAlign.center,
-          //           ),
-          //         ],
-          //       )),
-          // )
         ]),
       ),
     );
