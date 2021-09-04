@@ -31,6 +31,8 @@ dependencies:
   qr_code_scanner: 0.5.1
   hexcolor: ^1.0.1
   animated_splash_screen: 1.1.0
+  flutter_bloc: 6.1.1
+  equatable: 1.2.5
 
 dev_dependencies:
   flutter_test:
